@@ -1,0 +1,10 @@
+﻿<form novalidate *ngIf="{1} | async; let item">
+
+  <!--<mat-form-field class="form-full-width block">
+    <mat-label>Name</mat-label>
+    <input type="text" matInput name="item.name" [(ngModel)]="item.name" />
+  </mat-form-field>-->
+
+  <button type="submit" (click)="save(item)" mat-button mat-raised-button>Save</button>
+
+</form>

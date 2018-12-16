@@ -1,0 +1,27 @@
+﻿import { Action } from '@ngrx/store';
+import * as Actions from '../actions/{1}.actions';
+import { I{0}ListState, {1}ListState } from '../state/{1}-list.state';
+
+export function {1}ListReducer(state = {1}ListState, action: Actions.{0}ListActions): I{0}ListState {
+  switch (action.type) {
+    case Actions.{2}SLOADED_ACTION:
+      return {
+        ...state,
+        list: action.payload,
+      }
+
+    case Actions.DELETED{2}_ACTION:
+      return {
+        ...state,
+        deleted{0}: action.payload.objId,
+      }
+
+    case Actions.DELETE{2}_ACTION:
+      return {
+        ...state,
+      }
+      
+    default:
+      return state;
+  }
+}

@@ -1,0 +1,22 @@
+﻿import { AppState } from "../state/app.state";
+import { createSelector } from "@ngrx/store";
+import { I{0}ListState } from "../state/{1}-list.state";
+import { I{0}EditState } from "../state/{1}-edit.state";
+
+export const get{0}List = (state: AppState) => state.{1}ListState;
+export const get{0}Edit = (state: AppState) => state.{1}EditState;
+
+export const get{0}List_List = createSelector(
+  get{0}List,
+  (state: I{0}ListState) => state.list
+);
+
+export const get{0}List_ItemDeleted = createSelector(
+  get{0}List,
+  (state: I{0}ListState) => state.deleted{0}
+);
+
+export const get{0}Edit_Item = createSelector(
+  get{0}Edit,
+  (state: I{0}EditState) => state.{1}
+);

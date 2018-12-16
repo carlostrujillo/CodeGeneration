@@ -1,0 +1,6 @@
+C:\Users\carlos.trujillo\Source\repos\Project.CodeGeneration\obj\Debug\netcoreapp2.0\Project.CodeGeneration.csprojAssemblyReference.cache
+C:\Users\carlos.trujillo\Source\repos\Project.CodeGeneration\obj\Debug\netcoreapp2.0\Project.CodeGeneration.Resources.resources
+C:\Users\carlos.trujillo\Source\repos\Project.CodeGeneration\obj\Debug\netcoreapp2.0\Project.CodeGeneration.csproj.GenerateResource.cache
+C:\Users\carlos.trujillo\Source\repos\Project.CodeGeneration\obj\Debug\netcoreapp2.0\Project.CodeGeneration.csproj.CoreCompileInputs.cache
+C:\Users\carlos.trujillo\Source\repos\Project.CodeGeneration\obj\Debug\netcoreapp2.0\Project.CodeGeneration.AssemblyInfoInputs.cache
+C:\Users\carlos.trujillo\Source\repos\Project.CodeGeneration\obj\Debug\netcoreapp2.0\Project.CodeGeneration.AssemblyInfo.cs

@@ -1,0 +1,20 @@
+﻿using MongoDB.Driver;
+using Project.Models;
+using Project.Utils.Helpers;
+
+namespace Project.Web.DTO.Converter
+{
+
+    public static partial class DtoToModel
+    {
+        public static {0} ToModel(this {0}DTO dto, {0} model, IMongoDatabase db)
+        {
+            if (model.IsNull())
+            {
+                return null;
+            }
+
+            return model;
+        }
+    }
+}

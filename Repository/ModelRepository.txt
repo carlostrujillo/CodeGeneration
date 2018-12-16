@@ -1,0 +1,18 @@
+﻿using MongoDB.Driver;
+using Project.Models;
+using Project.Utils.Exceptions;
+using Project.Validation;
+
+namespace Project.Repository.Repository
+{
+    public class {0}Repository : BaseMongoRepository<{0}>, I{0}Repository
+    {
+        public override string CollectionName { get; } = "{0}List";
+
+
+        public {0}Repository(IMongoDatabase db)
+            : base(db)
+        {
+        }
+    }
+}

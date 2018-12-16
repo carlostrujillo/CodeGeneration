@@ -1,0 +1,43 @@
+﻿//
+// Generated Code
+// Do not change this file
+//
+
+namespace Project.Web.Loader
+{
+    using MongoDB.Driver;
+    using Ninject;
+    using Ninject.Parameters;
+    using Project.BLL.Contracts;
+    using Project.BLL.Services;
+    using Project.Models;
+
+    internal static class KernelLoader
+    {
+        public static IKernel Kernel { get; set; }
+
+        static KernelLoader()
+        {
+            Kernel = new StandardKernel();
+            {0}
+            Kernel.Bind(typeof(IUserService<>)).To(typeof(UserService<>));
+            Kernel.Bind(typeof(IGenericService<>)).To(typeof(GenericService<>));
+        }
+    }
+
+    internal class ServiceLoader
+    {
+       {1}
+	   public static IUserService<T> GetUserService<T>(IMongoDatabase db)
+            where T : User
+        {
+            return KernelLoader.Kernel.Get<IUserService<T>>(new ConstructorArgument("db", db));
+        }
+
+		 public static IGenericService<T> GetGenericService<T>(IMongoDatabase db)
+           where T : ModelBase
+        {
+            return KernelLoader.Kernel.Get<IGenericService<T>>(new ConstructorArgument("db", db));
+        }
+    }
+}

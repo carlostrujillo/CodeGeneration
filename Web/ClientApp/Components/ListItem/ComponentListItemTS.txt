@@ -1,0 +1,63 @@
+﻿import { Component, Input, OnInit, OnDestroy } from '@angular/core';
+import { {0}Model } from '../../../model/{1}.model';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { DialogOverviewExampleDialog } from '../../delete-confirmation/delete-confirmation.component';
+import { MatDialog } from '@angular/material';
+import { Delete{0}Action } from '../../../store/actions/{1}.actions';
+import { Store, select } from '@ngrx/store';
+import { AppState } from '../../../store/state/app.state';
+import { filter } from 'rxjs/operators';
+import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { get{0}List_ItemDeleted } from '../../../store/selectors/{1}.selectors';
+import { ChangeDetectionStrategy } from '@angular/compiler/src/core';
+
+@Component({
+  selector: 'app-{1}item',
+  templateUrl: './listitem.component.html',
+  styleUrls: ['./listitem.component.less'],
+})
+export class {0}ItemComponent implements OnInit, OnDestroy {
+  
+  @Input() {1}: {0}Model;
+  sub1: Subscription;
+
+  constructor(public sanitizer: DomSanitizer,
+    private store: Store<AppState>,
+    private router: Router,
+    public dialog: MatDialog) {
+
+  }
+
+  ngOnInit() {
+    this.sub1 = this.store.pipe(
+      select(get{0}List_ItemDeleted),
+      filter(x => x != null))
+      .subscribe(x => {
+        if (x == this.{1}.id) {
+          this.{1}.deleted = true;
+        }
+      })
+
+  }
+
+  ngOnDestroy(): void {
+    this.sub1.unsubscribe();
+  }
+
+  edit(): void {
+    this.router.navigate(['{1}-edit', this.{1}.id ]);
+  }
+  openDialog(): void {
+    let dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
+      width: '400px',
+      data: { title: "Delete", message: "Would you like to delete this item?" }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.store.dispatch(new Delete{0}Action(this.{1}.id));
+      }
+    });
+  }
+}

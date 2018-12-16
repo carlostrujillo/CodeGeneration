@@ -1,0 +1,13 @@
+﻿namespace Project.Validation
+{
+    using FluentValidation;
+    using Project.Models;
+
+    public class {0}Validator : AbstractValidator<{0}>
+    {
+        public {0}Validator()
+        {
+            //RuleFor(x => x.XX).NotEmpty();
+        }
+    }
+}

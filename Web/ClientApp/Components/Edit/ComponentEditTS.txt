@@ -1,0 +1,54 @@
+﻿import { Component, OnInit, OnDestroy } from '@angular/core';
+import { {0}Model } from '../../../model/{1}.model';
+import { Edit{0}Action, Post{0}Action, Put{0}Action, Edit{0}ResetAction } from '../../../store/actions/{1}.actions';
+import { Store, select } from '@ngrx/store';
+import { AppState } from '../../../store/state/app.state';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription, Observable } from 'rxjs';
+import { get{0}Edit_Item } from '../../../store/selectors/{1}.selectors';
+import { GetYoutubeTokenAction } from '../../../store/actions/util.actions';
+import { getUtil_YoutubeToken } from '../../../store/selectors/util.selectors';
+
+@Component({
+  selector: 'app-{1}edit',
+  templateUrl: './edit.component.html',
+  styleUrls: ['./edit.component.less']
+})
+export class {0}EditComponent implements OnInit, OnDestroy {
+
+  {1}: Observable<{0}Model> = this.store.pipe(select(get{0}Edit_Item));
+  id: string;
+  sub: Subscription;
+
+  constructor(private route: ActivatedRoute,
+    private router: Router,
+    private store: Store<AppState>) {
+  }
+
+  ngOnInit() {
+
+    this.store.dispatch(new Edit{0}ResetAction());
+    
+    this.sub = this.route
+      .params
+      .subscribe(params => {
+        this.id = params['id'];
+        if (this.id) {
+          this.store.dispatch(new Edit{0}Action(this.id));
+        }
+      });
+  }
+
+  ngOnDestroy() {
+    this.sub.unsubscribe();
+  }
+
+  save({1}: {0}Model) {
+    if ({1}.id) {
+      this.store.dispatch(new Put{0}Action({1}));
+    }
+    else {
+      this.store.dispatch(new Post{0}Action({1}));
+    }
+  }
+}

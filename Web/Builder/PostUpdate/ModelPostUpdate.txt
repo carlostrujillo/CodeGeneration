@@ -1,0 +1,28 @@
+﻿namespace Project.Web.Builder.{0}
+{
+	using Project.Web.DTO;
+	using Project.Web.DTO.Converter;
+	using Project.Web.Loader;
+	using Project.Web.Builder.Base;
+	using MongoDB.Driver;
+    using Project.BLL.Contracts;
+    using Project.Models;
+
+    public class {0}PostUpdateDataBuilder : BasePostUpdateDataBuilder<I{0}Service, Project.Models.{0}, {0}DTO, {0}PostUpdateDataBuilder>
+    {
+        public {0}PostUpdateDataBuilder(IMongoDatabase db)
+            : base(ServiceLoader.Get{0}Service(db))
+        {
+        }
+
+		  protected override {0}PostUpdateDataBuilder CheckPermission(User currentUser)
+        {
+            return this;
+        }
+
+        protected override Project.Models.{0} DtoToModel({0}DTO dto)
+        {
+            return dto.ToModel(DataToSave, DB);
+        }
+    }
+}

@@ -1,0 +1,27 @@
+﻿using BLL;
+using MongoDB.Driver;
+using Project.BLL.Contracts;
+using Project.Models;
+using Project.Utils.Helpers;
+using System;
+using System.Linq;
+using Project.Validation;
+using Project.Validation.Helper;
+
+namespace Project.BLL.Services
+{
+    public class {0}Service : ServiceBase<{0}>, I{0}Service
+    {
+        public {0}Service(IMongoDatabase db)
+            : base(ServiceLoader.Get{0}Repository(db))
+        {
+        }
+
+		 protected override void ValidateModel({0} entity)
+        {
+            new ModelValidator()
+                    .Validate(entity)
+                    .WithModelException();
+        }
+    }
+}

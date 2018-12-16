@@ -1,0 +1,3 @@
+﻿export class {0}Model {
+  id: string = null;
+}

@@ -1,0 +1,76 @@
+﻿import { Action } from '@ngrx/store';
+import { {0}Model } from '../../model/{1}.model';
+import { OkModel } from '../../model/ok.model';
+
+export const GETALL{2}S_ACTION = "getAll{0}s";
+export const {2}SLOADED_ACTION = "{0}sLoaded";
+export const DELETE{2}_ACTION = "Delete{0}";
+export const DELETED{2}_ACTION = "Deleted{0}";
+export const EDIT{2}_ACTION = "Edit{0}";
+export const EDIT{2}LOADED_ACTION = "Edit{0}Loaded";
+export const POST{2}_ACTION = "Post{0}Loaded";
+export const PUT{2}_ACTION = "Put{0}Loaded";
+export const SAVED{2}_ACTION = "Saved{0}Loaded";
+export const EDIT{2}RESET_ACTION = "Edit{0}ResetLoaded";
+
+export class GetAll{0}sAction implements Action {
+  readonly type = GETALL{2}S_ACTION;
+
+  constructor(public payload: number) { }
+}
+
+export class {0}sLoadedAction implements Action {
+  readonly type = {2}SLOADED_ACTION;
+
+  constructor(public payload: {0}Model[]) { }
+}
+
+export class Delete{0}Action implements Action {
+  readonly type = DELETE{2}_ACTION;
+
+  constructor(public payload: string) { }
+}
+
+export class Deleted{0}Action implements Action {
+  readonly type = DELETED{2}_ACTION;
+
+  constructor(public payload: OkModel) { }
+}
+
+export class Edit{0}Action implements Action {
+  readonly type = EDIT{2}_ACTION;
+
+  constructor(public payload: string) { }
+}
+
+export class Edit{0}LoadedAction implements Action {
+  readonly type = EDIT{2}LOADED_ACTION;
+
+  constructor(public payload: {0}Model) { }
+}
+
+export class Post{0}Action implements Action {
+  readonly type = POST{2}_ACTION;
+
+  constructor(public payload: {0}Model) { }
+}
+
+export class Put{0}Action implements Action {
+  readonly type = PUT{2}_ACTION;
+
+  constructor(public payload: {0}Model) { }
+}
+
+export class Saved{0}Action implements Action {
+  readonly type = SAVED{2}_ACTION;
+
+  constructor(public payload: OkModel) { }
+}
+
+export class Edit{0}ResetAction implements Action {
+  readonly type = EDIT{2}RESET_ACTION;
+}
+
+export type {0}ListActions = GetAll{0}sAction | {0}sLoadedAction | Delete{0}Action | Deleted{0}Action;
+
+export type {0}EditActions = Edit{0}Action | Edit{0}LoadedAction | Post{0}Action | Put{0}Action | Saved{0}Action | Edit{0}ResetAction;

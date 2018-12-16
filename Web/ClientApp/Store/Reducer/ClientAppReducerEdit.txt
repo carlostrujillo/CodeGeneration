@@ -1,0 +1,45 @@
+﻿import { Action } from '@ngrx/store';
+import * as Actions from '../actions/{1}.actions';
+import { I{0}ListState, {1}ListState } from '../state/{1}-list.state';
+import { {1}EditState, I{0}EditState } from '../state/{1}-edit.state';
+import { {0}Model } from '../../model/{1}.model';
+
+export function {1}EditReducer(state = {1}EditState, action: Actions.{0}EditActions): I{0}EditState {
+  switch (action.type) {
+    case Actions.EDIT{2}_ACTION:
+      return {
+        ...state,
+      }
+
+    case Actions.EDIT{2}LOADED_ACTION:
+      return {
+        ...state,
+        {1}: action.payload,
+      }
+
+    case Actions.POST{2}_ACTION:
+      return {
+        ...state,
+      }
+
+    case Actions.PUT{2}_ACTION:
+      return {
+        ...state,
+      }
+
+    case Actions.SAVED{2}_ACTION:
+      return {
+        ...state,
+        {1}: { ...state.{1}, id: action.payload.objId }
+      }
+
+    case Actions.EDIT{2}RESET_ACTION:
+      return {
+        ...state,
+        {1}: new {0}Model()
+      }
+
+    default:
+      return state;
+  }
+}

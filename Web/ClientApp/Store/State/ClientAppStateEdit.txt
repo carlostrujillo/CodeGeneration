@@ -1,0 +1,10 @@
+﻿import { LoggedInModel } from "../../model/loggedIn.model";
+import { {0}Model } from "../../model/{1}.model";
+
+export interface I{0}EditState {
+  {1}: {0}Model,
+}
+
+export const {1}EditState: I{0}EditState = {
+  {1}: null,
+}

@@ -1,0 +1,17 @@
+﻿<h1>{0}</h1>
+<button mat-button (click)="newItem()">Add new</button>
+
+<div class="container-fluid">
+  <div id="{1}List" class="row-fluid list-container" *ngFor="let {1} of dataSource | async;let i = index;">
+
+    <div class="col-md-6 left-style" *ngIf="i%2 == 0">
+      <app-{1}item class="card-item" [{1}]="{1}"></app-{1}item>
+    </div>
+
+    <div class="col-md-6 right-style" *ngIf="i%2 != 0">
+      <app-{1}item class="card-item" [{1}]="{1}"></app-{1}item>
+    </div>
+
+  </div>
+</div>
+<div class="clearfix"></div>

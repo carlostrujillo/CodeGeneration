@@ -1,0 +1,63 @@
+﻿import { Injectable } from "@angular/core";
+import { Actions, Effect, ofType } from "@ngrx/effects";
+import * as ActionsList from '../store/actions/{1}.actions';
+import { {0}Service } from "../services/{1}.services";
+import { map, exhaustMap, catchError, switchMap } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { mergeMap } from "rxjs/operator/mergeMap";
+import { of } from "rxjs/Observable/of";
+
+@Injectable()
+export class {0}sEffects {
+  constructor(private store: Store<any>,
+    private actions$: Actions,
+    private service: {0}Service) {
+  }
+
+  @Effect()
+  getAll$ = this.actions$.pipe(
+    ofType<ActionsList.GetAll{0}sAction>(ActionsList.GETALL{2}S_ACTION),
+    map((action) => action),
+    exhaustMap(request =>
+      this.service.getAll(request.payload)
+    ));
+
+  @Effect()
+  delete$ = this.actions$.pipe(
+    ofType<ActionsList.Delete{0}Action>(ActionsList.DELETE{2}_ACTION),
+    map((action) => action),
+    exhaustMap(request => {
+      return this.service.delete(request.payload);
+    }
+    ));
+
+  @Effect()
+  getByIdEdit$ = this.actions$.pipe(
+    ofType<ActionsList.Edit{0}Action>(ActionsList.EDIT{2}_ACTION),
+    map((action) => action),
+    exhaustMap(request => {
+      return this.service.getByIdEdit(request.payload);
+    }
+    ));
+
+  @Effect()
+  post$ = this.actions$.pipe(
+    ofType<ActionsList.Post{0}Action>(ActionsList.POST{2}_ACTION),
+    map((action) => action),
+    exhaustMap(request => {
+      return this.service.post(request.payload);
+    }
+    ));
+
+
+  @Effect()
+  put$ = this.actions$.pipe(
+    ofType<ActionsList.Put{0}Action>(ActionsList.PUT{2}_ACTION),
+    map((action) => action),
+    exhaustMap(request => {
+      return this.service.put(request.payload);
+    }
+    ));
+
+}

@@ -1,0 +1,8 @@
+﻿namespace Project.Repository
+{
+    using Project.Models;
+
+    public interface I{0}Repository : IRepository<{0}>
+    {
+    }
+}

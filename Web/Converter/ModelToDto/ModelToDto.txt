@@ -1,0 +1,23 @@
+﻿using Project.Models;
+using Project.Utils.Helpers;
+
+namespace Project.Web.DTO.Converter
+{
+    public static partial class ModelToDto
+    {
+        public static {0}DTO ToDto(this {0} model)
+        {
+            if (model.IsNull())
+            {
+                return null;
+            }
+
+            var dto = new {0}DTO(model)
+            {
+                
+            };
+
+            return dto;
+        }
+    }
+}

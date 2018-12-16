@@ -1,0 +1,17 @@
+﻿namespace Project.Web.DTO
+{
+    using Project.Models;
+    using System;
+
+    public class {0}DTO : DTOModelBase
+    {
+        public {0}DTO()
+        {
+        }
+
+        public {0}DTO({0} model)
+            : base(model)
+        {
+        }
+    }
+}

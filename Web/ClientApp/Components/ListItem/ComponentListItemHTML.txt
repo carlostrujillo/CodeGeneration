@@ -1,0 +1,12 @@
+﻿<mat-card [ngClass]="{'deleted': {1}.deleted }">
+  <mat-card-header>
+    <mat-card-title>{{{1}.name}}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+   
+  </mat-card-content>
+  <mat-card-actions *ngIf="{1}.canEdit && !{1}.deleted">
+    <button mat-button  (click)="edit()">Edit</button>
+    <button mat-button (click)="openDialog()">Delete</button>
+  </mat-card-actions>
+</mat-card>

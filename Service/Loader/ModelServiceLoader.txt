@@ -1,0 +1,40 @@
+﻿//
+// Generated Code
+// Do not change this file
+//
+
+namespace BLL
+{
+    using MongoDB.Driver;
+    using Ninject;
+    using Ninject.Parameters;
+    using Project.Repository;
+    using Project.Repository.Repository;
+
+    internal static class KernelLoader
+    {
+        public static IKernel Kernel { get; set; }
+
+        static KernelLoader()
+        {
+            Kernel = new StandardKernel();
+           {0}
+            Kernel.Bind(typeof(IUserRepository<>)).To(typeof(UserRepository<>));
+            Kernel.Bind(typeof(IGenericRepository<>)).To(typeof(GenericRepository<>));
+        }
+    }
+
+    internal class ServiceLoader
+    {
+       {1}
+	    public static IUserRepository<T> GetUserRepository<T>(IMongoDatabase db) where T: Project.Models.User
+        {
+            return KernelLoader.Kernel.Get<IUserRepository<T>>(new ConstructorArgument("db", db));
+        }
+
+		public static IGenericRepository<T> GetGenericRepository<T>(IMongoDatabase db) where T : Project.Models.ModelBase
+        {
+            return KernelLoader.Kernel.Get<IGenericRepository<T>>(new ConstructorArgument("db", db));
+        }
+    }
+}

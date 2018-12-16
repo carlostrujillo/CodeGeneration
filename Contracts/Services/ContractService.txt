@@ -1,0 +1,9 @@
+﻿using Project.Models;
+
+namespace Project.BLL.Contracts
+{
+    public interface I{0}Service : IBaseService<{0}>
+    {
+        
+    }
+}

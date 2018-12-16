@@ -1,0 +1,106 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Contracts\Repository\ContractRepository.txt" />
+    <None Remove="Contracts\Services\ContractService.txt" />
+    <None Remove="Repository\ModelRepository.txt" />
+    <None Remove="Service\Loader\ModelServiceLoader.txt" />
+    <None Remove="Service\ModelService.txt" />
+    <None Remove="Validation\ModelValidation.txt" />
+    <None Remove="Web\Builder\All\ModelGetAll.txt" />
+    <None Remove="Web\Builder\Delete\ModelDeleteById.txt" />
+    <None Remove="Web\Builder\GetById\ModelGetById.txt" />
+    <None Remove="Web\Builder\PostUpdate\ModelPostUpdate.txt" />
+    <None Remove="Web\ClientApp\Components\Edit\ComponentEditHTML.txt" />
+    <None Remove="Web\ClientApp\Components\Edit\ComponentEditLESS.txt" />
+    <None Remove="Web\ClientApp\Components\Edit\ComponentEditTS.txt" />
+    <None Remove="Web\ClientApp\Components\ListItem\ComponentListItemHTML.txt" />
+    <None Remove="Web\ClientApp\Components\ListItem\ComponentListItemLESS.txt" />
+    <None Remove="Web\ClientApp\Components\ListItem\ComponentListItemTS.txt" />
+    <None Remove="Web\ClientApp\Components\List\ComponentListHTML.txt" />
+    <None Remove="Web\ClientApp\Components\List\ComponentListLESS.txt" />
+    <None Remove="Web\ClientApp\Components\List\ComponentListTS.txt" />
+    <None Remove="Web\ClientApp\Effects\ClientAppEffects.txt" />
+    <None Remove="Web\ClientApp\Model\ClientAppModel.txt" />
+    <None Remove="Web\ClientApp\Service\ClientAppService.txt" />
+    <None Remove="Web\ClientApp\Store\Actions\ClientAppActions.txt" />
+    <None Remove="Web\ClientApp\Store\Reducer\ClientAppReducerEdit.txt" />
+    <None Remove="Web\ClientApp\Store\Reducer\ClientAppReducerList.txt" />
+    <None Remove="Web\ClientApp\Store\Selector\ClientAppSelector.txt" />
+    <None Remove="Web\ClientApp\Store\State\ClientAppStateEdit.txt" />
+    <None Remove="Web\ClientApp\Store\State\ClientAppStateList.txt" />
+    <None Remove="Web\Controller\Controller.txt" />
+    <None Remove="Web\Converter\DtoToModel\DtoToModel.txt" />
+    <None Remove="Web\Converter\ModelToDto\ModelToDto.txt" />
+    <None Remove="Web\DTO\ModelDTO.txt" />
+    <None Remove="Web\Loader\ModelWebLoader.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Contracts\Repository\ContractRepository.txt" />
+    <EmbeddedResource Include="Contracts\Services\ContractService.txt" />
+    <EmbeddedResource Include="Repository\ModelRepository.txt" />
+    <EmbeddedResource Include="Service\Loader\ModelServiceLoader.txt" />
+    <EmbeddedResource Include="Service\ModelService.txt" />
+    <EmbeddedResource Include="Validation\ModelValidation.txt" />
+    <EmbeddedResource Include="Web\Builder\All\ModelGetAll.txt" />
+    <EmbeddedResource Include="Web\Builder\Delete\ModelDeleteById.txt" />
+    <EmbeddedResource Include="Web\Builder\GetById\ModelGetById.txt" />
+    <EmbeddedResource Include="Web\Builder\PostUpdate\ModelPostUpdate.txt" />
+    <EmbeddedResource Include="Web\ClientApp\Components\ListItem\ComponentListItemHTML.txt" />
+    <EmbeddedResource Include="Web\ClientApp\Components\ListItem\ComponentListItemLESS.txt" />
+    <EmbeddedResource Include="Web\ClientApp\Components\ListItem\ComponentListItemTS.txt" />
+    <EmbeddedResource Include="Web\ClientApp\Components\List\ComponentListHTML.txt" />
+    <EmbeddedResource Include="Web\ClientApp\Components\List\ComponentListLESS.txt" />
+    <EmbeddedResource Include="Web\ClientApp\Components\List\ComponentListTS.txt" />
+    <EmbeddedResource Include="Web\ClientApp\Components\Edit\ComponentEditTS.txt" />
+    <EmbeddedResource Include="Web\ClientApp\Components\Edit\ComponentEditLESS.txt" />
+    <EmbeddedResource Include="Web\ClientApp\Components\Edit\ComponentEditHTML.txt" />
+    <EmbeddedResource Include="Web\ClientApp\Effects\ClientAppEffects.txt" />
+    <EmbeddedResource Include="Web\ClientApp\Model\ClientAppModel.txt" />
+    <EmbeddedResource Include="Web\ClientApp\Service\ClientAppService.txt" />
+    <EmbeddedResource Include="Web\ClientApp\Store\Actions\ClientAppActions.txt" />
+    <EmbeddedResource Include="Web\ClientApp\Store\Reducer\ClientAppReducerList.txt" />
+    <EmbeddedResource Include="Web\ClientApp\Store\Reducer\ClientAppReducerEdit.txt" />
+    <EmbeddedResource Include="Web\ClientApp\Store\Selector\ClientAppSelector.txt" />
+    <EmbeddedResource Include="Web\ClientApp\Store\State\ClientAppStateList.txt" />
+    <EmbeddedResource Include="Web\ClientApp\Store\State\ClientAppStateEdit.txt" />
+    <EmbeddedResource Include="Web\Controller\Controller.txt" />
+    <EmbeddedResource Include="Web\Converter\DtoToModel\DtoToModel.txt" />
+    <EmbeddedResource Include="Web\Converter\ModelToDto\ModelToDto.txt" />
+    <EmbeddedResource Include="Web\DTO\ModelDTO.txt" />
+    <EmbeddedResource Include="Web\Loader\ModelWebLoader.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Build" Version="15.9.20" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Project.Model\Project.Models.csproj" />
+    <ProjectReference Include="..\Project.Utils\Project.Utils.csproj" />
+  </ItemGroup>
+
+
+
+  <ItemGroup>
+    <Compile Update="Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+</Project>

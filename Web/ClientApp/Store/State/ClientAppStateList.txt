@@ -1,0 +1,12 @@
+﻿import { LoggedInModel } from "../../model/loggedIn.model";
+import { {0}Model } from "../../model/{1}.model";
+
+export interface I{0}ListState {
+  deleted{0}: string,
+  list: {0}Model[],
+}
+
+export const {1}ListState: I{0}ListState = {
+  deleted{0}: null,
+  list: [],
+}

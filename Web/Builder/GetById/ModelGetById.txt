@@ -1,0 +1,37 @@
+﻿namespace Project.Web.Builder.{0}
+{
+	using Project.Web.DTO;
+	using Project.Web.DTO.Converter;
+	using Project.Web.Loader;
+	using Project.Web.Builder.Base;
+	using MongoDB.Driver;
+    using Project.BLL.Contracts;
+    using Project.Models;
+
+    public class {0}GetByIdBuilder : BaseGetByIdBuilder<I{0}Service, Project.Models.{0}, {0}GetByIdBuilder>
+    {
+        // private {0}Includes[] _includes = new {0}Includes[0];
+
+        public {0}GetByIdBuilder(IMongoDatabase db)
+            : base(ServiceLoader.Get{0}Service(db))
+        {
+        }
+
+		 protected override {0}GetByIdBuilder CheckPermission(User currentUser)
+        {
+            return this;
+        }
+
+		 protected override void IncludeDataForEditing()
+        {
+           // Data.CheckPermission(_currentUser);
+
+            // _includes = new {0}Includes[] {  };
+        }
+
+        public {0}DTO Build()
+        {
+            return Data.ToDto();
+        }
+    }
+}

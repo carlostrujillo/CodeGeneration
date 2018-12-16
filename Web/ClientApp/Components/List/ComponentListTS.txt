@@ -1,0 +1,42 @@
+﻿import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Store, select } from '@ngrx/store';
+import { AppState } from '../../../store/state/app.state';
+import { AccountService } from '../../../services/account.services';
+import { GetAll{0}sAction } from '../../../store/actions/{1}.actions';
+import { {0}Model } from '../../../model/{1}.model';
+import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
+import { get{0}List_List } from '../../../store/selectors/{1}.selectors';
+import { BusinessModel } from '../../../model/business.model';
+import { getBusinessCanManage{0} } from '../../../store/selectors/util.selectors';
+import { GetBusinessCanManage{0}Action } from '../../../store/actions/util.actions';
+
+@Component({
+  selector: 'app-{1}list',
+  templateUrl: './list.component.html',
+  styleUrls: ['./list.component.less']
+})
+export class {0}ListComponent implements OnInit, OnDestroy {
+
+  dataSource: Observable<{0}Model[]> = this.store.pipe(select(get{0}List_List));
+  page: number = 0;
+  business: Observable<BusinessModel[]> = this.store.pipe(select(getBusinessCanManage{0}));
+
+  constructor(private store: Store<AppState>,
+    private router: Router,
+    private user: AccountService) {
+  }
+
+  newItem() {
+    this.router.navigate(['{1}-new']);
+  }
+
+  ngOnInit() {
+    this.store.dispatch(new GetAll{0}sAction(this.page));
+    this.store.dispatch(new GetBusinessCanManage{0}Action());
+  }
+
+  ngOnDestroy(): void {
+
+  }
+}

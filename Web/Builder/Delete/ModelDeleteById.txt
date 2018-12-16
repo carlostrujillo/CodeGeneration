@@ -1,0 +1,24 @@
+﻿namespace Project.Web.Builder.{0}
+{
+	using Project.Web.Loader;
+	using MongoDB.Driver;
+	using Project.Web.Builder.Base;
+    using Project.BLL.Contracts;
+	using Project.Models;
+    using Project.BLL.Helper;
+
+    public class {0}DeleteByIdBuilder : BaseDeleteByIdBuilder<I{0}Service, Project.Models.{0}, {0}DeleteByIdBuilder>
+    {
+        public {0}DeleteByIdBuilder(IMongoDatabase db)
+            : base(ServiceLoader.Get{0}Service(db))
+        {
+        }
+
+		 protected override {0}DeleteByIdBuilder CheckPermission(User currentUser)
+        {
+           // Data.CheckPermission(currentUser);
+
+            return this;
+        }
+    }
+}

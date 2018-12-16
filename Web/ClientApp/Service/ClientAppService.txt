@@ -1,0 +1,123 @@
+﻿import { Injectable } from '@angular/core';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { Observable } from 'rxjs/Observable';
+import { Store } from '@ngrx/store';
+import { catchError, map } from 'rxjs/operators';
+import { LoggedInAction, NotLoggedInAction } from '../store/actions/account.actions';
+import { ShowErrorAction } from '../store/actions/util.actions';
+import { MatSnackBar } from '@angular/material';
+import { AppComponent } from '../app.component';
+import { BaseService } from './base.services';
+import { {0}sLoadedAction, Deleted{0}Action, Edit{0}LoadedAction, Saved{0}Action } from '../store/actions/{1}.actions';
+import { {0}Model } from '../model/{1}.model';
+import { EmptyObservable } from 'rxjs/observable/EmptyObservable';
+import { OkModel } from '../model/ok.model';
+import { ToastrService } from 'ngx-toastr';
+
+@Injectable()
+export class {0}Service extends BaseService {
+
+  constructor(private http: HttpClient,
+    public toastr: ToastrService,
+    private store: Store<any>) {
+    super(toastr);
+  }
+
+  getAll(page: number): Observable<any> {
+    const params = new HttpParams()
+      .set('page', page.toString());
+
+    return this.http.get('/api/{0}/getAll', { headers: this.headers(), params: params })
+      .pipe(
+        map((data: {0}Model[]) => new {0}sLoadedAction(data)),
+        catchError((err, caught) => {
+          super.showError(err.error.Errors);
+
+          return new EmptyObservable();
+        })
+      );
+  }
+
+  delete(id: string): Observable<any> {
+    const params = new HttpParams()
+      .set('id', id);
+
+    return this.http.delete('/api/{0}/delete', { headers: this.headers(), params: params })
+      .pipe(
+        map((data: OkModel) => {
+          super.showOk(data.message);
+          return new Deleted{0}Action(data);
+        }),
+        catchError((err, caught) => {
+          super.showError(err.error.Errors);
+
+          return new EmptyObservable();
+        })
+      );
+  }
+
+  getByIdEdit(id: string): Observable<any> {
+    const params = new HttpParams()
+      .set('id', id);
+
+    return this.http.get('/api/{0}/GetByIdEdit', { headers: this.headers(), params: params })
+      .pipe(
+        map((data: {0}Model) => {
+          return new Edit{0}LoadedAction(data);
+        }),
+        catchError((err, caught) => {
+          super.showError(err.error.Errors);
+
+          return new EmptyObservable();
+        })
+      );
+  }
+
+  getById(id: string): Observable<any> {
+    const params = new HttpParams()
+      .set('id', id);
+
+    return this.http.get('/api/{0}/GetById', { headers: this.headers(), params: params })
+      .pipe(
+        map((data: {0}Model) => {
+          return new Edit{0}LoadedAction(data);
+        }),
+        catchError((err, caught) => {
+          super.showError(err.error.Errors);
+
+          return new EmptyObservable();
+        })
+      );
+  }
+
+  post(obj: {0}Model): Observable<any> {
+
+    return this.http.post('/api/{0}/Post', obj, { headers: this.headers() })
+      .pipe(
+        map((data: OkModel) => {
+          super.showOk(data.message);
+          return new Saved{0}Action(data);
+        }),
+        catchError((err, caught) => {
+          super.showError(err.error.Errors);
+          return new EmptyObservable();
+        })
+      );
+  }
+
+  put(obj: {0}Model): Observable<any> {
+
+    return this.http.put('/api/{0}/Put', obj, { headers: this.headers() })
+      .pipe(
+        map((data: OkModel) => {
+          super.showOk(data.message);
+          return new Saved{0}Action(data);
+        }),
+        catchError((err, caught) => {
+          super.showError(err.error.Errors);
+
+          return new EmptyObservable();
+        })
+      );
+  }
+}

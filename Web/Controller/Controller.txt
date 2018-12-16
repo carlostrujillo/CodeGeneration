@@ -1,0 +1,103 @@
+﻿using System;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Project.Web.Builder.{0};
+using Project.Web.DTO;
+using MongoDB.Bson;
+using System.Collections.Generic;
+
+namespace Project.Web.Controllers.API
+{
+    //[ValidateAntiForgeryToken]
+    [Authorize]
+    [Route("api/{0}/[action]")]
+    public class {0}Controller : BaseApiController
+    {
+        public {0}Controller(Config.DataContext context)
+            : base(context)
+        {
+        }
+
+		[HttpGet]
+        [ProducesResponseType(typeof(IEnumerable<{0}DTO>), 200)]
+        public IActionResult GetAll()
+        {
+            return CreateActionResult((db, currentUser) =>
+            {
+                return new {0}GetListBuilder(db)
+                                .SetCurrentUser(currentUser)
+								.GetData()
+								.Build();
+            });
+        }
+
+        [HttpGet]
+        [ProducesResponseType(typeof({0}DTO), 200)]
+        public IActionResult GetById(Guid id)
+        {
+            return CreateActionResult((db, currentUser) =>
+            {
+                return new {0}GetByIdBuilder(db)
+                                .SetCurrentUser(currentUser)
+                                .GetDataById(id)
+								.ViewMode()
+                                .Build();
+            });
+        }
+
+		 [HttpGet]
+        [ProducesResponseType(typeof({0}DTO), 200)]
+        public IActionResult GetByIdEdit(Guid id)
+        {
+            return CreateActionResult((db, currentUser) =>
+            {
+                return new {0}GetByIdBuilder(db)
+                                .SetCurrentUser(currentUser)
+                                .GetDataById(id)
+								.EditMode(currentUser)
+                                .Build();
+            });
+        }
+
+        [HttpPost]
+        [ProducesResponseType(typeof(OkDTO), 200)]
+        public IActionResult Post([FromBody]{0}DTO dto)
+        {
+            return CreateActionResult((db, currentUser) =>
+            {
+                return new {0}PostUpdateDataBuilder(db)
+                                .SetCurrentUser(currentUser)
+                                .SetDataNew(dto)
+                                .Save()
+                                .Build();
+            });
+        }
+
+        [HttpPut]
+        [ProducesResponseType(typeof(OkDTO), 200)]
+        public IActionResult Put([FromBody]{0}DTO dto)
+        {
+            return CreateActionResult((db, currentUser) =>
+            {
+                return new {0}PostUpdateDataBuilder(db)
+                                .SetCurrentUser(currentUser)
+                                .SetDataUpdate(dto)
+                                .Save()
+                                .Build();
+            });
+        }
+
+        [HttpDelete]
+        [ProducesResponseType(typeof(OkDTO), 200)]
+        public IActionResult Delete(Guid id)
+        {
+            return CreateActionResult((db, currentUser) =>
+            {
+                return new {0}DeleteByIdBuilder(db)
+								.SetCurrentUser(currentUser)
+								.DeleteById(id)
+								.Build();
+            });
+        }
+    }
+}
